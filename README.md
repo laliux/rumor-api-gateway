@@ -40,10 +40,10 @@ The code presented here is part of a technical test to evaluate my proficiency i
 ### Code
 This repo contains the following folders:
 
-- grpc - Definition of gRPC protocols
-- products-service - Nestjs implementation of the gRPC service to manage products
-- orders-service - Nestjs implementation of the gRPC service to place and query orders
-- api-gateway - Golang implementation of an API gateway to serve the gRPC services
+- 📁 grpc - Definition of gRPC protocols
+- 📁 products-service - Nestjs implementation of the gRPC service to manage products
+- 📁 orders-service - Nestjs implementation of the gRPC service to place and query orders
+- 📁 api-gateway - Golang implementation of an API gateway to serve the gRPC services
 
 The main folder contains the docker and docker-compose files to build the projects.
 
