@@ -1,39 +1,39 @@
 # Rumor Microservices
-The code presented here is part of a technical test to evaluate the proficiency in designing and implementing microservices architectures using gRPC, Nest.JS, and Golang.
+The code presented here is part of a technical test to evaluate my proficiency in designing and implementing microservices architectures using gRPC, Nest.JS, and Golang.
 
 ### Requirements
 
 1. Product Service (Nest.JS):
-    - Implement CRUD operations for products (Create, Read, Update, Delete). **100%**
-    - Each product should have at least a name, description, and price and available quantity. **100%**
+    - [x] Implement CRUD operations for products (Create, Read, Update, Delete).
+    - [x] Each product should have at least a name, description, price and available quantity.
 
 2. Order Service (Nest.JS):
-    - Implement functionality to place an order. An order should reference one or more products and specify the quantities. **100%**
-    - Implement a simple order listing functionality, which returns a list of all orders with produc details. **100%**
-    - Implement an interservice call to Product service using gRPC to ensure that the product actually exists and has quantity available. **100%**
+    - [x] Implement functionality to place an order. An order should reference one or more products and specify the quantities.
+    - [x] Implement a simple order listing functionality, which returns a list of all orders with product details.
+    - [x] Implement an interservice call to Product service using gRPC to ensure that the product exists and has quantity available.
 
 3. API Gateway (Golang):
-    - Develop an API Gateway that exposes REST endpoints for the functionalities of the Product and Order Services. **100%**
-    - Implement JWT authentication to secure the endpoints. **100%**
-    - Add a rate limiting feature to protect the services from overuse (Bonus). _Not implemented_
+    - [x] Develop an API Gateway that exposes REST endpoints for the functionalities of the Product and Order Services. 
+    - [x] Implement JWT authentication to secure the endpoints. 
+    - [ ] Add a rate-limiting feature to protect the services from overuse (Bonus).
 
 4. gRPC:
-    - Define gRPC protocols in a separate project. **100%**
-    - Make sure to compile these and include them in respective projects as compiled gRPC protocols. **100%**
+    - [x] Define gRPC protocols in a separate project.
+    - [x] Make sure to compile these and include them in respective projects as compiled gRPC protocols.
 
 5. gRPC Communication:
-    - Establish gRPC communication between the microservices and the API Gateway. **100%**
-    - Define the necessary Protobuf messages and services for the operations above. **100%**
+    - [x] Establish gRPC communication between the microservices and the API Gateway.
+    - [x] Define the necessary Protobuf messages and services for the operations above.
 
 6. Unit Tests:
-    - Write unit tests for the business logic of your application, including the data fetching and parsing logic. _Not implemented_
+    - [ ] Write unit tests for the business logic of your application, including the data fetching and parsing logic.
 
 7. Bonus - Unit Tests (Optional):
-    - Write unit tests for Product and Order microservices to test business logic. _Not implemented_
+    - [ ] Write unit tests for Product and Order microservices to test business logic.
 
 8. Docker
-    - Containerize the Product Service, Order Service, and API Gateway. **100%**
-    - Provide a Docker Compose file to orchestrate the startup of the entire system. **100%**
+    - [x] Containerize the Product Service, Order Service, and API Gateway.
+    - [x] Provide a Docker Compose file to orchestrate the startup of the entire system.
 
 9. Documentation _Pending_
 
@@ -42,8 +42,8 @@ This repo contains the following folders:
 
 - grpc - Definition of gRPC protocols
 - products-service - Nestjs implementation of the gRPC service to manage products
-- orders-service - Nestjs implemtation of the gRPC service to place an query orders
-- api-gateway - Golang implentation of an API gateway to serve the gRPC services
+- orders-service - Nestjs implementation of the gRPC service to place and query orders
+- api-gateway - Golang implementation of an API gateway to serve the gRPC services
 
 The main folder contains the docker and docker-compose files to build the projects.
 
@@ -60,12 +60,12 @@ After that you will have the API gateway running in port 8080 and you can start 
 **/products** expose all the endpoints in products service.
 **/orders** expose all the endpoints in order service.
 
-Additionally the **/login** endpoint is provided to get and JWT token. This token is neccesary to call the /products and /orders endpoints.
+Additionally, the **/login** endpoint is provided to get a JWT token. This token is necessary to call the /products and /orders endpoints.
 
 #### Get a JWT
-The credentials to get a JWT token are harcoded. The username=hello and password=123.
+The credentials to get a JWT token are hardcoded. The username=hello and password=123.
 
-**IMPORTANT**: JWT token will be truncated for documentation purposes, be sure to use the full token returned by /login endpoint.
+Important: JWT token will be truncated for documentation purposes, be sure to use the full token returned by /login endpoint.
 
 ```
 curl -X POST http://localhost:8080/login -H 'Content-Type: application/json' -d '{"Username": "hello", "Password": "123"}'
@@ -248,9 +248,9 @@ curl -s -X POST http://localhost:8080/orders \
 
 
 ### TODO
-Working in this test was very interesting and a real challenge, I reinforced many of my knowledge and also learned a lot. I made a great effort to comply with all the requirements, but some things were left pending, I mention only a few:
+Working in this test was very interesting and a real challenge, I reinforced much of my knowledge and also learned a lot. I made a great effort to comply with all the requirements, but some things were left pending, I mention only a few:
 
-- Connect NestJS services to a external database. Right now they are using a SQLite db.
+- Connect NestJS services to an external database. Right now they are using an SQLite db.
 - Set JWT secret and port numbers as environment variables
 - Add tests
 - Add documentation
