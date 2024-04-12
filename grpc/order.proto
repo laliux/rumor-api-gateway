@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+// Define the package name
+package orders;
+
+import "product.proto";
+
+option go_package = "github.com/laliux/rumor-api-gateway/protogen/golang/order";
+
+message Order {
+    string id = 1;
+    repeated Product products = 2;
+}
+
+message OrderProduct {
+    string product = 1;
+    uint32 qty = 2;
+}
+
+message CreateOrderRequest {
+    repeated OrderProduct orderProducts = 1;
+}
+
+message GetAllOrdersRequest {
+}
+
+message GetAllOrdersResponse {
+  repeated Order orders = 1;
+}
+
+
+service OrderService {
+    rpc CreateOrder(CreateOrderRequest) returns (Order);
+    rpc GetAllOrders(GetAllOrdersRequest) returns (GetAllOrdersResponse);
+}

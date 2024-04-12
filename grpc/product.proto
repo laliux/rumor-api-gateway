@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+// Define the package name
+package orders;
+
+option go_package = "github.com/laliux/rumor-api-gateway/protogen/golang/product";
+
+// Define the Product message
+message Product {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  float  price = 4;
+  uint32 qty = 5; 
+}
+
+message CreateProductRequest {
+  string name = 1;
+  string description = 2;
+  float  price = 3;
+  uint32 qty = 4; 
+}
+
+// Request message to get and delete a product by ID
+message ProductByIdRequest {
+  string id = 1;
+}
+
+// Request message to update a product
+message UpdateProductRequest {
+  string id = 1;
+  Product product = 2;
+}
+
+message GetAllProductsRequest {
+}
+
+// Response message containing all products
+message GetAllProductsResponse {
+  repeated Product products = 1;
+}
+
+// Define the service for CRUD operations on products
+service ProductService {
+  // Create a new product
+  rpc CreateProduct(CreateProductRequest) returns (Product);
+
+  // Get a product by ID
+  rpc GetProductById(ProductByIdRequest) returns (Product);
+
+  // Update a product
+  rpc UpdateProduct(UpdateProductRequest) returns (Product);
+
+  // Delete a product by ID
+  rpc DeleteProductById(ProductByIdRequest) returns (Product);
+
+  // Get all products
+  rpc GetAllProducts(GetAllProductsRequest) returns (GetAllProductsResponse);
+}
+
